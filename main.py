@@ -1,22 +1,29 @@
-from currency_lib import convert_currency
+from shapes import *
 
 def main():
     while True:
         try:
-            base_currency = input("Enter the base currency (e.g., USD) or type 'exit' to quit: ").upper()
-            if base_currency == 'EXIT':
-                print("Goodbye!")
-                break
+            shape = input("Enter shape (rectangle, circle, triangle): ").lower()
 
-            target_currency = input("Enter the target currency (e.g., EUR): ").upper()
-            amount = float(input("Enter the amount to convert: "))
+            if shape == 'rectangle':
+                width = float(input("Enter width: "))
+                height = float(input("Enter height: "))
+                print(f"Area of rectangle: {area_of_rectangle(width, height)}")
+                
+            elif shape == 'circle':
+                radius = float(input("Enter radius: "))
+                print(f"Area of circle: {area_of_circle(radius)}")
+                
+            elif shape == 'triangle':
+                base = float(input("Enter base: "))
+                height = float(input("Enter height: "))
+                print(f"Area of triangle: {area_of_triangle(base, height)}")
+                
+            else:
+                print("Unknown shape")
 
-            converted_amount = convert_currency(base_currency, target_currency, amount)
-            print(f"{amount} {base_currency} is equal to {converted_amount:.2f} {target_currency}.\n")
-        except ValueError as e:
-            print(f"Error: {e}")
         except Exception as e:
-            print(f"Unexpected error: {e}")
+            print(f"An error occurred: {e}")
 
 if __name__ == "__main__":
     main()
