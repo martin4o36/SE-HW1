@@ -4,7 +4,6 @@ def main():
     while True:
         try:
             shape = input("Enter shape (rectangle, circle, triangle): ").lower()
-            print("Test for commit")
 
             if shape == 'rectangle':
                 width = float(input("Enter width: "))
