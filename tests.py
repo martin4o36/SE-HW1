@@ -22,5 +22,5 @@ def test_area_of_zero():
     assert area_of_triangle(0, 0) == 0
 
 # Failng test on purpose
-# def test_area_of_circle_invalid_radius():
-#     assert area_of_circle(-3) == 28.274333882308138
+def test_area_of_circle_invalid_radius():
+    assert area_of_circle(-3) == 28.274333882308138
