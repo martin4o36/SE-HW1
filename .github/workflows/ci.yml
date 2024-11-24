@@ -36,5 +36,9 @@ jobs:
             python -m py_compile $file || exit 1
           done
 
+      - name: Run the code to check for runtime errors
+        run: |
+          python main.py || exit 1
+
       - name: Run tests
         run: pytest tests.py

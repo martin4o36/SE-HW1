@@ -1,5 +1,5 @@
 from shapes import *
-import some_shit
+# import some_shit
 
 def main():
     while True:
