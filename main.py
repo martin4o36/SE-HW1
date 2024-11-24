@@ -3,7 +3,7 @@ from shapes import *
 def main():
     width = 2.5
     height = 10
-    ppprint(f"Area of rectangle: {area_of_rectangle(width, height)}");
+    print(f"Area of rectangle: {area_of_rectangle(width, height)}")
 
     radius = 7
     print(f"Area of circle: {area_of_circle(radius)}")
