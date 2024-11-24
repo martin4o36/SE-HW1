@@ -3,10 +3,10 @@ name: CI
 on:
   push:
     branches:
-      - main  # Trigger when pushing to the main branch
+      - main
   pull_request:
     branches:
-      - main  # Trigger on pull request to the main branch
+      - main
 
 jobs:
   build:
@@ -19,13 +19,13 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.12'  # Adjust this to your Python version
+          python-version: '3.12'
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pytest  # If no requirements.txt
+          pip install pytest  # You can add any additional dependencies here
 
       - name: Run tests with pytest
         run: |
-          pytest --maxfail=1 --disable-warnings -q
+          pytest --maxfail=1 --disable-warnings -q  # Stop after the first failure
