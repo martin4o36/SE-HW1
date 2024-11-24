@@ -1,15 +1,12 @@
-name: CI
+name: CI Workflow
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches:
       - main
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,13 +16,18 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.12'
+          python-version: 3.9
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pytest  # You can add any additional dependencies here
+          pip install -r requirements.txt || echo "No requirements file. Skipping."
 
-      - name: Run tests with pytest
+      - name: Compile Python files
         run: |
-          pytest --maxfail=1 --disable-warnings -q  # Stop after the first failure
+          for file in $(find . -name "*.py"); do
+            python -m py_compile $file || exit 1
+          done
+
+      - name: Run tests
+        run: pytest tests.py
